@@ -53,5 +53,7 @@ setup(
     setup_requires=[],
     tests_require=[],
     extras_require={},
-    entry_points={},
+    entry_points={
+        'mrbob_templates': {'plone_addon': 'bobtemplates.plone:addon'}
+    },
 )
