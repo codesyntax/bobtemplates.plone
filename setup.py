@@ -55,14 +55,14 @@ setup(
     extras_require={},
     entry_points={
         'mrbob_templates': [
-            'plone_addon = bobtemplates.plone.bobregistry:get_addon',
-            'plone_buildout = bobtemplates.plone.bobregistry:get_buildout',  # NOQA E501
-            'plone_theme_package = bobtemplates.plone.bobregistry:get_theme_package',  # NOQA E501
+            'plone_addon = bobtemplates.plone.bobregistry:plone_addon',
+            'plone_buildout = bobtemplates.plone.bobregistry:plone_buildout',  # NOQA E501
+            'plone_theme_package = bobtemplates.plone.bobregistry:plone_theme_package',  # NOQA E501
         ],
         'mrbob_subtemplates': [
-            'plone_theme = bobtemplates.plone.bobregistry:get_theme',
-            'plone_content_type = bobtemplates.plone.bobregistry:get_content_type',  # NOQA E501
-            'plone_vocabulary = bobtemplates.plone.bobregistry:get_vocabulary',
+            'theme = bobtemplates.plone.bobregistry:theme',
+            'content_type = bobtemplates.plone.bobregistry:content_type',  # NOQA E501
+            'vocabulary = bobtemplates.plone.bobregistry:vocabulary',
         ],
     },
 )
