@@ -58,8 +58,6 @@ setup(
             'plone_addon = bobtemplates.plone.bobregistry:plone_addon',
             'plone_buildout = bobtemplates.plone.bobregistry:plone_buildout',  # NOQA E501
             'plone_theme_package = bobtemplates.plone.bobregistry:plone_theme_package',  # NOQA E501
-        ],
-        'mrbob_subtemplates': [
             'theme = bobtemplates.plone.bobregistry:theme',
             'content_type = bobtemplates.plone.bobregistry:content_type',  # NOQA E501
             'vocabulary = bobtemplates.plone.bobregistry:vocabulary',
