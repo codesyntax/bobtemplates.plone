@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 class RegEntry(object):
     def __init__(self):
         self.template = ''
