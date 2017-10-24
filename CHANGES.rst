@@ -4,6 +4,9 @@ Changelog
 3.0.0a3 (unreleased)
 --------------------
 
+- Include content-types created using the subtemplate in navigation settings
+  [erral]
+
 - Fix #222 default travis setup is broken.
   [jensens, pbauer]
 
