@@ -5,6 +5,7 @@ Changelog
 --------------------
 
 - Fix missing parameter in _get_package_root_folder call
+- Include content-types created using the subtemplate in navigation settings
   [erral]
 
 - Fix #222 default travis setup is broken.
