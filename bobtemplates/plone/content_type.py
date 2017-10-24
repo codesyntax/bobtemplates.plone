@@ -136,6 +136,47 @@ def _update_rolemap_xml(configurator):
     update_file(configurator, file_path, match_str, insert_str)
 
 
+def _update_registry_xml(configurator):
+    file_name = u'registry.xml'
+    file_path = '{0}/profiles/default/{1}'.format(
+        configurator.variables['package_folder'],
+        file_name,
+    )
+    with open(file_path, 'r') as xml_file:
+        parser = etree.XMLParser(remove_blank_text=True)
+        tree = etree.parse(xml_file, parser)
+        tree_root = tree.getroot()
+        xpath_selector = ".//record[@name='plone.displayed_types']/value"
+        if len(tree_root.findall(xpath_selector)):
+            print('record already in registry.xml, adding new content-type information')
+            value = tree_root.findall(xpath_selector)[0]
+            element = etree.Element('element')
+            element.text = configurator.variables['dexterity_type_name_klass']
+            value.append(element)
+
+        else:
+
+            record = etree.Element(
+                'record',
+                name="plone.displayed_types",
+                interface="Products.CMFPlone.interfaces.controlpanel.INavigationSchema",
+                field="displayed_types"
+            )
+            value = etree.Element('value', purge="False")
+            element = etree.Element('element')
+            element.text = configurator.variables['dexterity_type_name_klass']
+            value.append(element)
+            record.append(value)
+            tree_root.append(record)
+
+    with open(file_path, 'wb') as xml_file:
+        tree.write(
+            xml_file,
+            pretty_print=True,
+            xml_declaration=True,
+            encoding='utf-8',
+        )
+
 def _update_permissions_zcml(configurator):
     file_name = u'permissions.zcml'
     file_path = configurator.variables['package_folder'] + '/' + file_name
@@ -196,5 +237,6 @@ def post_renderer(configurator):
     _update_types_xml(configurator)
     _update_permissions_zcml(configurator)
     _update_rolemap_xml(configurator)
+    _update_registry_xml(configurator)
     _update_metadata_xml(configurator)
     _update_setup_py(configurator)
